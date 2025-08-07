@@ -3,6 +3,7 @@ FROM gradle:8.7.0-jdk17 AS build
 
 # Copy project files
 COPY . /app
+
 WORKDIR /app
 
 # Build the application
@@ -13,11 +14,9 @@ FROM openjdk:17-slim
 WORKDIR /app
 
 # Copy the built app from the previous stage
-COPY --from=build /app/build/install/smartgift/app
+COPY --from=build /app/build/install/smartgift/app /app
 
-# Replace 'your-app-name' with your actual app name in build.gradle.kts
-
-# Expose port (same as in your Ktor application.conf)
+# Expose port
 EXPOSE 8080
 
 # Run the app
