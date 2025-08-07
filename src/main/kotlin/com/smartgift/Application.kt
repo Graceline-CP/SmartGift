@@ -17,7 +17,7 @@ import io.ktor.http.ContentType
 
 
 fun main() {
-    embeddedServer(Netty, port = 8080) {
+    embeddedServer(Netty, port = System.getenv("PORT")?.toInt() ?: 8080) {
         install(ContentNegotiation) {
             gson()
         }
