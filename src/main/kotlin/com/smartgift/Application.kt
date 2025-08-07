@@ -84,41 +84,55 @@ fun main() {
                             background-color: #f2f2f2;
                             padding: 40px;
                         }
+
                         h2 {
                             text-align: center;
                             color: #4b0082;
                             font-size: 32px;
+                            margin-bottom: 30px;
                         }
+
                         form {
                             background-color: #fff;
-                            padding: 30px;
-                            max-width: 400px;
+                            padding: 30px 40px;
+                            max-width: 450px;
                             margin: auto;
                             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
                             border-radius: 10px;
                             display: flex;
                             flex-direction: column;
+                            gap: 20px;
                         }
+
+                        .form-group {
+                            display: flex;
+                            flex-direction: column;
+                        }
+
                         label {
-                            margin-bottom: 10px;
                             font-weight: 600;
+                            margin-bottom: 6px;
+                            color: #333;
                         }
+
                         input, select {
                             padding: 10px;
                             border: 1px solid #ccc;
                             border-radius: 6px;
-                            margin-bottom: 20px;
+                            font-size: 14px;
                         }
+
                         button {
                             background-color: #6a0dad;
                             color: white;
-                            padding: 12px;
+                            padding: 14px;
                             font-size: 16px;
                             border: none;
                             border-radius: 8px;
                             cursor: pointer;
                             transition: background-color 0.3s ease;
                         }
+
                         button:hover {
                             background-color: #5a009d;
                         }
@@ -127,35 +141,46 @@ fun main() {
                 <body>
                     <h2>📝 Gift Survey</h2>
                     <form action="/submit-form" method="post">
-                        <label>Age Group:
-                            <input type="text" name="ageGroup" required />
-                        </label>
-                        <label>Budget:
-                            <select name="budget" required>
+                        <div class="form-group">
+                            <label for="ageGroup">Age Group:</label>
+                            <input type="text" id="ageGroup" name="ageGroup" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="budget">Budget:</label>
+                            <select id="budget" name="budget" required>
                                 <option>High</option>
                                 <option>Medium</option>
                                 <option>Low</option>
                             </select>
-                        </label>
-                        <label>Relationship:
-                            <select name="relationship" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="relationship">Relationship:</label>
+                            <select id="relationship" name="relationship" required>
                                 <option>Friend</option>
                                 <option>Sibling</option>
                                 <option>Partner</option>
                                 <option>Parent</option>
                                 <option>Other</option>
                             </select>
-                        </label>
-                        <label>Likes:
-                            <input type="text" name="interests" required />
-                        </label>
-                        <label>Occasion:
-                            <input type="text" name="occasion" required />
-                        </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interests">Likes:</label>
+                            <input type="text" id="interests" name="interests" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="occasion">Occasion:</label>
+                            <input type="text" id="occasion" name="occasion" required />
+                        </div>
+
                         <button type="submit">Get My Gift 🎁</button>
                     </form>
                 </body>
                 </html>
+
                 """.trimIndent(), ContentType.Text.Html)
             }
             post("/submit-form") {
